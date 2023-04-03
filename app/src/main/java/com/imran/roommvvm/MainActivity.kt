@@ -21,9 +21,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        schoolDatabase = SchoolDatabase.getDetabase(this)
+
+/*
+        // we need to use singleton object , it was not good practice
         schoolDatabase = Room.databaseBuilder(applicationContext,
         SchoolDatabase::class.java,
-        "school_db").build()
+        "school_db").build()*/
 
       GlobalScope.launch {
             schoolDatabase.studentDao().insertStudent(Student(0,"imran","ceo"))
